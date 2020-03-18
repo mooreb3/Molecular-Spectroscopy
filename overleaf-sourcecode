@@ -1,0 +1,557 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{physics}
+\usepackage{blindtext} %for enumarations
+\usepackage{siunitx}
+\usepackage[]{hyperref}  %link collor
+
+%talbe layout to the right
+%\usepackage[labelfont=bf]{caption}
+%\captionsetup[table]{labelsep=space,justification=raggedright,singlelinecheck=off}
+%\captionsetup[figure]{labelsep=quad}
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+%\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+\usepackage{float}
+
+\setlength\parskip{4pt}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+\begin{document}
+\title{
+\normalfont \normalsize 
+\textsc{Trinity College Dublin} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge  Molecular Spectroscopy \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{  Benjamin Moore \\ 17327505\\ Dr. Brian R. Espey} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+\newpage
+
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+%\begin{multicols}{2}
+
+\section{Abstract}
+The purpose of this experiment was to investigate the details of molecular bonding through the analysis of the emission and absorption spectra of various molecules. The experiment was generally a success, as the data collected follow the expected trends. Our first experiment measured the emission spectrum of a mercury lamp. The relative intensities of the peak values were similar, with their relative error varying between 8 and 25\% from literature \cite{21}. The theoretical and measured values for the optical resolution agreed within 26.7\% of each other.
+The Nitrogen emission spectrum agreed with the Franck-Condon table as it produced the expected trends through the Binge-Sponer method. The good shape of the morse potential function show that the data was acquired correctly, as do the trends in the energy levels. In part 3 the graphs produced followed each other closely, however, a sharp decrease with increasing wavelength was present on the tungsten emission graph.
+Finally, using the same white light source, the experiment on the absorption spectrum of $I_2$ was plotted at different temperatures, showing absorption of various vibrational energy levels. The plot of this against wavenumber was sufficient in estimating the fundamental wavenumber to be 133 $cm^{-1}$, the anharmonic constant to be 1 and the zero point energy to be $E_0=15,498.75cm^{-1}$.
+
+\section{Introduction}
+\subsection{Aims and Spectrometer Specs}
+The aim of this experiment was to record and analyse the optical emission and absorption spectroscopy of various molecules. This was done using 2 computerised diffraction grating spectrometers. Each was a $50 \mu m$ diameter Czeny-Turner Flame-T (300-510 nm) and Flame-S (340-850 nm) spectrometers from Ocean Optics. (Relevant specs for here and part ??? see \cite{manual}). Due to this small size fibre, there is no need to have an input slit. The spectrum is read out in parallel using a charge-coupled device (CCD) array and fed to the computer via an analogue-to-digital (ADC) converter. A narrower slit may be placed in front of the fibre to increase optical resolution. The Flame-S has 2048 pixel detector, whilst the Flame-T has 3648 pixel detector. The Flame-S model had 600 lines/mm on its grating, whilst the Flame-T model had 1800 lines/mm. The efficiency of these mechanically ruled spectrometers varies with wavelengths, so it is chosen to have maximum efficiency in the middle of its range of use. 
+
+\subsection{Optical Resolution Calculation}\label{optical}
+There were 3 ways of calculating the optical resolution encountered suitable for this experiment.
+\begin{itemize}
+    \item FWHM
+    \item Measuring through physical parameters
+    \item Using Rayleigh Criterion.
+\end{itemize}
+
+The first involved taking half the global maximum and finding the difference between the 2 points leading to and away from this maximum.
+
+The second method involved taking \begin{itemize}
+    \item The number of pixels
+    \item The range of wavelength on each spectrometer
+    \item The pixel resolution, given by the fibre diameter
+\end{itemize}
+Using these parameters we can calculate the resolving power 
+\begin{equation}
+    \Delta \lambda= \frac{ Range\times r}{n}
+\end{equation}
+where n is the number of pixels, r is the pixel resolution and range is the range of the spectrometer.
+
+The third method involves using Rayleigh criterion where
+\begin{equation}
+    R= \frac{\lambda}{\Delta \lambda}=p \times N
+\end{equation}
+where p is the order number and N is the total number of  lines on the grating (S has 600 and T has 1800). 
+
+\subsection{Molecular Orbital Theory}
+The Molecular Orbital theory marked a departure from Lewis and VSEPR models of molecules that were based on the one-center orbitals of individual atoms. MO theory introduces the notion of \textit{hybridisation} where orbitals are modified by characteristics of their interactions with molecules. It is seen as a great quantum mechanical theory for approximating bonding in molecules. The main difference between MO theory and other valence bonding models is that the electron density is shared throughout the molecule, and that the new orbitals that form can take on different shapes based upon the overlap of electron densities that occur.
+
+Another important characteristic that molecular orbital theory addresses is that it must allow for same number of possible sets of electronic quantum numbers. For this reasons, the atomic orbitals feed into bonding and antibonding orbitals.
+
+\textit{Explain the key differences between bonding and antibonding orbitals. Hint: consider the graphs for charge density.}
+
+Bonding orbitals are in-phase overlaps of the matter waves, and anti-bonding is the out of phase combination. Only the in-phase overlap can cause molecular bonding through electron density being weighted towards the intervening space. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=8cm]{electromdensity.png}
+    \caption{Charge density, or amplitude of wavefunction squared, $(\abs{\Psi}^2$}
+    \label{fig:my_label}
+\end{figure}
+The plot \ref{fig:my_label} above shows that bonding orbitals have a high probability of an electron occupying the space between atoms. Antibonding orbitals then have a low probability of occupying this space.
+
+
+
+
+The first molecular orbital is the $\sigma$ orbital that occurs due to symmetrical overlaps of S orbitals, or $P_x$ orbitals, creating a spherical distribution of electron density, ie orbital. They are cylindrically symmetric with respect to the line of the centre of the nuclei.
+
+The second orbital type is $\pi$ and comes from the sideways overlap of $P_y$ and $P_z$ orbitals. They extend in both perpendicular directions from the line of centres. \cite{MO theory}
+
+Another key distinction that is available is the symmetry upon inversion around the centre of the molecule. If the orbital is identical, it is said to be centrosymmetric or \textit{gerade}. If not it is \textit{ungerade}.
+
+\subsection{Quantum Harmonic Oscillator and Anharmonic Oscillator}
+The Quantum Harmonic Oscillator is the quantum analog of the classical harmonic oscillator. It can be used to approximate the potential curve of many systems (atoms, molecules..) in the vicinity of a stable equilibrium. The eigenvalues corresponding to the discrete energy values around this point can be well approximated.
+Through identification of the frequency of oscillation in rotation, vibrational and electronic modes, it can be identified that the electronic transition are greater than the vibrational, which in turn are greater than the rotational transitions.
+
+The two molecules that will be investigated in this experiment are linear homonuclear diatomic molecules Iodine and Nitrogen. 
+
+When counting degrees of freedom, they have 3 translational, 2 rotational (on axis rotation is negligible) and through the equation for number of degrees of freedom for linear compounds, $DOF= 3N-5$, it can be calculated that the molecules have 1 vibrational mode.
+The energy of rotation about one axis can be given by
+\begin{equation}
+    E_J=\frac{J(J+1)\hbar}{2I}
+\end{equation}
+where I, the moment of inertia is given by
+\begin{equation}
+ I=\sum_i M_ir_i^2   
+\end{equation}
+
+Energies in rotational and vibrational spectroscopy are usually measured in $cm^{-1}$
+\begin{equation}
+    \frac{E_J}{hc}=BJ(J+1)
+\end{equation}
+where B is the rotational constant.
+
+Our experiment however is focused on the vibrational and electronic energy levels. An analogy to the symmetric stretching that the molecules vibrate through would be Hook's Law, where the force can be estimated to be proportional to the displacement, and the potential increases to the square of the displacement. Solving the Schrödinger equation for this potential gives 
+\begin{equation}
+    E_v=(v+\frac{1}{2})\hbar \omega
+\end{equation}
+where v is the principle quantum number, $\omega=\sqrt{\frac{k}{\mu}}$, k being the restoration constant and $\mu=\frac{M_1M_2}{M_1+M_2}$ is the reduced mass of the system. For a vibrational system the harmonic oscillator has similar solution.
+\begin{equation}
+    G(v) = (v + \frac{1}{2})\Tilde{v}
+\end{equation}
+where $\Tilde{v}=\frac{\omega}{2\pi c}$ is the wavenumber of the fundamental frequency of the vibration.
+
+\textit{Explain why one must consider the system in terms of reduced mass.}
+In a two body problem, the centre of mass is the centre of the coordinate system. Measurements are taken from here. However, laws such as Hook's law were derived for single mass problems. Therefore, it is necessary to find an inertial mass solution. This equations accounts for the relativity of the displacement.
+
+\textit{Explain with reference to the potential well of harmonic and anharmonic oscillator why the approximation is not appropriate for high energy levels}
+
+Outlined above is the first approximate of normal vibration. As is the case with Hooke's law, it is only accurate for small displacements and an ideal 'spring'. The general potential can be more accurately given through the Taylor expansion around the potential.
+\begin{equation}
+    V(x)=V(x_0)+\frac{\delta V(x)}{\delta x}(x-x_0) + ... \frac{1}{n!}\frac{\delta^n V(x)}{\delta x^n}(x-x_0)^n
+\end{equation}
+Solutions to this version of the potential give the anharmonicity of the eigenvalues. The added terms provide a perturbation to the system, and these perturbations may not be exactly harmonic.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=8cm]{morsevsho.png}
+    \caption{Plot comparing the variation between Harmonic and Anharmonic Oscillators}
+    \label{fig:morse}
+\end{figure}
+
+The image above shows the great deviation between harmonic and anharmonic oscillators at greater distances, ie for higher eigenvalues. Therefore, for high energy levels, and high relative displacement of atoms, the simple harmonic oscillator is not appropriate.
+
+Through acknowledgement of the Coulombic and Pauli repulsion, the potential used represents an asymetric anharmonic potential, called the Morse potential.
+\begin{equation}
+    V(r)=D_e(1-\exp{-\beta(r-r_0)})^2
+\end{equation}
+where \begin{itemize}
+    \item $\beta$ is a constant 
+    \item $D_e$ is the depth of the well
+    \item $r_0$ is the equilibrium spacing
+\end{itemize}
+$\beta$ is related to $\Tilde{v}$ through
+\begin{equation}
+    \Tilde{v}=\frac{\omega}{2\pi c}=\frac{\beta}{c}\times \sqrt{\frac{D_e}{2 \pi^2\mu}}
+\end{equation}
+Solving this we get the eigenvalues for the Morse potential as
+\begin{equation}
+    G(v)=(v+\frac{1}{2}\Tilde{v}-(v+\frac{1}{2})^2x_e\Tilde{v}
+\end{equation}
+
+\subsection{Extra investigation: Selection rules, Transition Moment Integral and Franck-Condon Factor}
+The probability of an atom or molecule to have a transition from one state to another depends on two things: the nature of the initial and final state wavefunction, and how strongly photons interact with an eigenstate.
+Transition strengths are used to describe transition probability, whereas selection rules are used to determine whether a transition is possible or not. \cite{Selection Rules}
+Electromagnetic waves induce electric and magnetic moments. If the frequency of the induced moment is the same as the energy difference between eigenstates, the interaction is resonant. The amplitude of this moment is called the \textit{transition moment}. The transition dipole moment is defined as the probability of transitioning from one state to another.
+\begin{equation}
+    M_{21}=\int \Psi_2 \mu \Psi_1 \delta \tau
+\end{equation}
+where $\mu$ us the dipole moment operator.
+
+Due to the Born-Oppenheimer Approximation \cite{Born-opp} we can assume that the motion of the nuclei and electrons in a molecule can be treated separately based upon relative speeds. This allows for the total wavefunction of a molecule to be decomposed into electronic, vibrational and rotational parts. 
+\begin{equation}
+    \Psi(r,R)=\psi_e(r,R_e) \psi_v(R) \psi_r(R)
+\end{equation}
+The rotational energy levels are small, and not resolved in most spectra, therefore for the purpose of our experiment we can remove it. After cancelling orthogonal wavefunction dut products, the transition probability can be given by 
+\begin{equation}
+    M=\int \psi_e'(r,R_e)\cdot \mu_e \cdot \psi_e''(r,R_e) \delta r \int \psi_v'(R) \cdot \psi_v''(R) \delta R \label{a}
+\end{equation}
+The selection rules that dictate electronic, vibrational and rotational transitions can be seen in \cite{Selection Rules}. However, this experiment deals mainly with vibronic transitions, a coupling of vibrational and electronic transitions which seems to disobey some of the selection rules at times. This occurs as the probability of a transitions is derived from the transition moment integral. For coupling to be allowed the integral above has to be non-zero.
+
+The \textbf{Franck-Condon Principle} states that for electronic transitions, the timescale for transition is so fast that the nucleus can be considered static and the vibrational transition from one state to another is more likely if these states have a large overlap in wavefunction. 
+
+From the equation \ref{a} above $\int \psi_v'(R) \cdot \psi_v''(R) dR$ is the vibrational overlap, and this squared (ie the distribution of the vibrational transitions) is the \textbf{Franck-Condon Factor.}
+For vibrational transitions to occur, the vibrational ground state and excited state must have a strong overlap. 
+\textit{How do the timescale of nuclear and electronic motion compare to make this assumption accurate?}
+From the frequency of visible light radiation being in the realm of $10^{-15}$ sec we know the timescale of electronic transitions. By assuming that no external source is exerting a force on the molecular system, the momentum of the centre of mass of the system is always conserved. Therefore, as the ratio of nucleon to electron is ~1836, and there are twice as many nucleons as electrons for stable, low mass atoms roughly speaking, we would expect the transition of atoms to be ~3672 times slower, with frequencies of $10^{-12}$ sec scale. This corresponds to $10^{-4}$ m wavelength, which is in the infrared region.
+
+\textit{Some peaks with similar intensities have different Franck-Condon factors. Why?}
+This is because as can be seen in \ref{a} Frack-Condon factors are only half of the story in regards the transition probability or intensity. It represents the vibrational energy level overlap, but not the electronic energy level overlap.
+
+\section{Method}
+\subsection{Experiment 1: Emission spectrum of a mercury discharge lamp}
+Both spectrometers were checked to be connected via USB to the computer. OceanView software was then initiated. A spectrum was obtained in continuous acquisition mode for the mercury lamp, and multiple peaks recorded. Next the integration time, average scans and boxcar setting were all changed to show their effect on the spectrum and optimise the output. The spectrum was also corrected for electrical dark. The maximum number of counts were obtained (before saturation) and thus, the ADC resolution was obtained. Finally, the doublet spacing and optical resolution was calculated.
+
+\subsection{Experiment 2: Emission Spectrum of N2}
+The Flame-T spectrometer was connected to the Nitrogen lamp via its optical fibre by the technician as to avoid damage through bending passed its maximum bend radius. It is important to avoid direct exposure from the lamp as it radiates UV rays. Also, when switching off, allow 2 minutes for the lamp to cool down before switching it on again. The spectrum was saved and recorded. The various peaks were compared using the Franck-Condon factors. A Deslandres table was created with the wavenumbers of the various frequencies. The fundamental frequency and anharmonicity correction were computed using the simultaneous equations on page 7 of the lab manual. Finally Birge-Sponer data analysis and the Morse potential were plotted using the data acquired.
+\subsection{Experiment 3: Emission spectrum of a continuum white light source}
+The Flame-S spectrometer was used to record the emission spectrum of tungsten. Unnecessary exposure was avoided. As in part 1, the various settings under data aquisition group were optimised, and the maximum number of counts recorded again. The spectrum was then compared to that of a blackbody at 2800 K.
+
+\subsection{Experiment 4: Absorption spectrum of I2}
+The same set up is used as in experiment 3 however, an iodine vapour cell is heated using a heating mat such that there are absorption lines that have intensity predicted by Beer-Lamberts law \begin{equation}
+    I=I_0\exp{-\mu x}
+\end{equation}
+where $\mu=n\sigma$ where n is the number density and $\sigma$ is the cross section of absorption, and x is the column length. The iodine cell is placed infront of the white light source, and the OceanView softwear is setup so that it takes the absorption spectrum as a fraction of its original intensity. The cell is allowed to heat for 10 minutes up to ~30\si{\degree}. The wavelengths corresponding to the greatest absorption bands were recorded. A plot of $\Tilde{V}$ vs v+1/2 was recorded, and the fundamental frequency and anharmonicity recorded.
+
+\section{Results and Discussion}
+\subsection{Experiment 1: Emission spectrum of a mercury discharge lamp}
+\subsubsection{Using Flame-T}
+The emission spectrum was recorded using the Flame-T spectrometer. The results of the the experiment were as follows; changing the number of scans to average had little effect on the spectrum, showing that the spectrum had reliable relative intensities. Changing the integration time had the effect of increasing the number of particles detected per recording. It was important to keep the intensity high to lower relative error, but avoid saturation with this control. The boxcar setting was used to smooth out the graph, and had little effect on our spectrum as it was an emission line spectrum. By correcting for electrical dark we subtracted the background radiation that caused the overall spectrum to have a higher intensity. This was done by incorporating a calibration scan. The maximum number of counts before saturation of the CCD array occurred around 63,000 counts. It could be reasoned that this is just below the \textbf{saturation charge level} of 65,000 (as the corresponding ADC is 16 bit). The intensity cuts off before the saturation point to avoid the effects of CCD saturation and blooming, such as non-linearity\cite{19}. An ADC device simply converts the analog voltage to a binary number, and then finally to the digital number displayed on the screen. How close the digital number (ie, the 63,000 counts) is also dependant on the resolution of the ADC which can be found through dividing the maximum input voltage by the number of bits \cite{20}.
+
+The mercury emission spectrum has peaks as follows;
+%\begin{table}
+%\centering
+\centering
+
+\begin{tabular}{c|c}
+  Wavelength (nm)   & Intensity (counts) \\
+   $313.5 \pm 1 $&$ 2400 \pm 300$\\
+    $365.8 \pm 1 $&$ 39,500 \pm 1000$\\
+    $366 \pm .5  $&$ 14,700 \pm 500$\\
+   $405.3 \pm .5 $&$ 35,900 \pm 500$\\
+    $408.5 \pm .5 $&$ 3500 \pm 300$\\
+   $436.4 \pm .2 $&$ 62,600 \pm 500$
+   
+\end{tabular}
+
+\textbf{Caption:Wavelengths and Intensities of Mercury peaks}
+
+The results above agree with literature values from \cite{21}. The relative error in the measured peaks as compared to these values were varied. Taking the value of 436.4 nm as an intensity of 0.8334, 365.8 nm has a relative error of 8.6 \%. However, the intensity recorded at 405.3 nm has an intensity when converted to relative intensities of 0.5734. When compared to the literature value of 0.7676 it has a relative error of 25.3\%.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 5.5cm]{mercury_beforesaturation.png}
+    \includegraphics[width = 5.5cm]{mercury_electricaldarkoff.png}
+    
+    \includegraphics[width = 5.5cm]{Mercury_lamp1_FlameT.png}
+    \includegraphics[width=5.5cm]{Mercury_integrationtime_10ms.png}
+    \caption{\textbf{Plots of Mercury emission i) before saturation ii) with electric dark switched off iii)With saturation iv) With the integration time turned down to 10 ms from 100 ms}}
+    \label{fig:my_label}
+\end{figure}
+
+The plots above show various alterations that could be made to the spectrum.
+
+The doublet spacing in the range of 300-510 nm on mercury was recorded between 313.26 and 313.9 nm, with a spacing of 0.65 nm. From literature \cite{22}, the expected doublet for ,mercury is in the 577/579.1 nm range. This was outside of our range with this spectrometer, however the proximity of the other lines leads me to believe that this splitting is also due to the Zeeman effect.
+
+The optical resolution was calculated through the 3 methods outlined in \ref{optical}.
+From the first method, the resolution was obtained around half the maximum of 346.3 nm, which occured between 436.71 and 436.2 nm. This produces a resolution of \begin{equation}
+    \frac{\lambda}{\Delta \lambda}= \frac{436.4}{0.51}=855.68
+\end{equation}
+Through the second method, the resolution could be obtained by 
+\begin{equation}
+    \Delta \lambda= \frac{n \times r}{range}=\frac{210 \times 6.5}{3648}=0.374 nm
+\end{equation}
+\begin{equation}
+    R=\frac{\lambda}{\Delta \lambda}= \frac{436.4}{0.374}=1167.6
+\end{equation}
+
+The third method was also used in our calculations
+\begin{equation}
+    R= p\cdot N= 1\times 1800 = 1800
+\end{equation}
+
+\subsubsection{Using Flame-S}
+Upon repeating the same experiment with the Flame-S the following results were recorded. 
+
+\centering
+\begin{tabular}{c|c}
+wavelength (nm)    & Intensity (counts)\\
+    $364.1 \pm 1 $&$ 3200 \pm 200$\\
+    $402.35 \pm 1 $&$ 10400 \pm 300$\\
+    $434.8 \pm 1 $&$ 32,500 \pm 500$\\
+    $545.7 \pm 1 $&$ 63,300 \pm 50 $\\
+    Doublet spacing\\
+    $578.9 \pm .5 $&$ 7600 \pm 200$\\
+    $578.7 \pm .5 $&$ 8400 \pm 200$\\
+    
+\end{tabular}
+
+The spectrum matched the same literature as stated before, this time the doublet spacing was present in the range. The doublet was measured at $1.2 \pm .707 $ nm.
+The optical resolution through method 1 was calculated using the same formula.
+\begin{equation}
+    \frac{500 \times 6.5}{2048} = 1.58 nm
+\end{equation}
+\begin{equation}
+    \frac{545.7}{1.58}= R = 345.3
+\end{equation}
+Through method 2 around 545.7 nm the resolution was found to be 326.76.
+Through method 3 the theoretical value was calculated to be around 600. However, for both Flame-T and Flame-S, the final method is an approximate as it has no wavelength dependency. 
+
+\subsection{Experiment 2: Emission Spectrum of N2}
+From a plot of the emission spectrum of $N_2$ and the Frack-Condon factors supplied, the initial and final vibrational energy levels could be understood. The relative overlap between the wavefunctions was given by the Franck-Condon Factor, and as this is proportional to the probability of that vibrational level occurring, it was also proportional to the intensity of emission when the vibrational energy levels from the same electronic energy level were considered, ie along the same row. This negated the effect of the electronic wavefunction on the overall wavefunction, and therefore on the probability of the wavefunction occuring. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{N2.png}
+    \caption{The emission spectrum of nitrogen}
+    \label{fig:n2}
+\end{figure}
+
+Row zero is the lines associated with the greatest intensity, and is given by wavelengths 337.69 nm, 334.447 nm, 331.592 nm and 329.136 nm. The next row in the Franck-Condon table is associated with the second highest family of peaks, with the same stepped wavelength pattern throughout the family, highlighting how the energy levels have a linear relationship with wavenumber, and thus wavelength.
+
+The Deslandre table can be calculated by finding the wavenumber of the peaks and applying them to the same rows as in the Franck-Condon table. The results are be given by;
+
+\begin{tabular}{c|c|c|c|c|c|c|c}
+    v'/v'' & 0 & 0-1 & 1 & 1-2 & 2 & 2-3 & 3 \\
+    $0  & 2.96 & -.03 & 2.99 & -.025 & 3.015 & -.023 & 3.038$\\
+    $1 & 2.79 & -.031 & 2.82 & -.03 & 2.85$ \\
+    $2 & 3.159 & -.023 & 3.18 & -.0204 & 3.202$\\
+    $3 & 2.623 & -.035 & 2.658 & -.032 & 2.69 & -.029 & 2.719$\\
+    $4 & 2.46 & -.013 & 2.473 & -.059 & 2.532$
+\end{tabular}
+
+\textbf{Caption: Deslandre Table $cm ^{-1}$, $ values\times 10^4$}
+
+The data above can be used to calculate the dissociation energy through Birge-Sponer data analysis.plotting $\Delta G_{v+{\frac {1}{2}}}$ against $v+\frac{1}{2} $ should give a straight line, from which it is easy to extract $ v_{max}$ from the intercept with the x-axis. This can be reapplied to the Birge-Sponer method $\Delta G_{v+\frac{1}{2}}=G(v+1)-G(v) $ to find the dissociation energy. For now however, it is sufficient to use to show how the wavenumber of the vibration increases with energy level.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5.5cm]{BS11.png}
+    \includegraphics[width=5.5cm]{BS12.png}\\
+    \includegraphics[width=5.5cm]{BS13.png}
+    \caption{Birge-Sponer Method showing relationship between energy level and wavenumber}
+    \label{fig:n2}
+\end{figure}
+
+The Morse Potential was plotted by finding the constant $\beta$. First the simultaneous equations for the wavenumber and anharmicity constant were solved to produce $\Tilde{v}=400 cm^{-1}$ and $\Tilde{V}X= 50 cm^-1$. Next the dissociation energy was calculated, by first finding $D_0$ through
+\begin{equation}
+   D_0= \frac{\Tilde{v}^2}{4\Tilde{v}X}
+\end{equation}
+Next this could be used to find the dissociation energy through the equation 
+\begin{equation}
+    \frac{D_e}{hc}=\frac{D_0}{hc}+\frac{E_0}{hc}
+\end{equation}
+taking $E_0$ to equal $\frac{1}{2}\Tilde{v}$.
+Finally, $\beta$ can be evaluated through
+\begin{equation}
+    \Tilde{v}=\frac{\beta}{c}\sqrt{\frac{D_e}{2\pi^2\mu}}
+\end{equation}
+where $\mu$ is the reduced mass. $\beta$ was calculated to equal $4.07 \times 10^9$.
+
+The Morse potential was then plotted for various energy levels.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9.5cm]{MP.png}
+    \caption{Morse Potential at various energy levels}
+\end{figure}
+
+\subsection{Experiment 3: Emission spectrum of a continuum white light source}
+The saturation count for this experiment was similar to that of experiment 1, indicating a 16 bit ADC. Below are plots of i) the blackbody spectrum at 2800 K that tungsten emission follows to a good approximation and the actual emission spectrum of tungsten. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9.5cm]{BB.png}
+    \caption{Blackbody spectrum at T=2800 K}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{Emission of tungsten.png}
+    \caption{Emission spectrum of tungsten}
+\end{figure}
+
+The actual emission of tungsten falls off greatly with increased wavelength, as both the intensity and the range of the spectrum is much more truncated.
+
+\subsection{Experiment 4: Absorption spectrum of I2}
+The absorption spectrum through iodine at 30 \si{degrees}C was recorded. The corresponding blackbody spectrum shows a much greater intensity across the spectrum however it appears that the deviation from the ideal blackbody does increase with wavelength.   
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 9cm]{iodine at 27deg.png}
+    \caption{Iodine absorption spectrum at 27 \si{degrees}C}
+    \label{fig:iodine}
+\end{figure}
+    
+\begin{figure}
+    \centering
+    \includegraphics[width = 9cm]{iodine absorption at 29.png}
+    \caption{Iodine absoption at 29 degrees C}
+\end{figure}    
+
+From here it can be seen that the main absorption peaks occur in the range 530 nm to 540 nm. These peaks correspond to transitions between the 27th, 28th and 29th vibrational energy level at 541.2, 539.0 and 536.9 nm respectively. 
+Through using these principle quantum numbers, and the wavenumbers associated with the wavelengths, we can extrapolate the plot below and find that $\Tilde{v}=133cm^{-1}$, $\Tilde{v}X = 1$ and $E_0=15,498.75 cm^{-1}$ by using numpys polyfit function of degree 2 to fit to the anharmonic oscillator.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{part44.png}
+    \caption{Anharmonic vibrational energy levels}
+\end{figure}
+
+\subsection{Error Analysis}
+All the data recorded had associated error with it, therefore for calculations such as that of finding the optical resolution, there was error propagation involved. For example, the error for the second method used to find the optical resolution could be found by computing
+\begin{equation}
+    \frac{\Delta R}{R} = \sqrt{{\frac{\Delta n}{n}}^2 + {\frac{\Delta r}{r}}^2 + \frac{\Delta Range}{Range}^2}
+\end{equation}
+Taking $\Delta range=7$nm from the measured specs, $\Delta n=0$ and $\Delta r = 1$, we have a relative error of 0.1574 on the optical resolution.
+
+\section{Conclusion}
+In conclusion, The expected results were found across the experiment. Part one had the expected relative intensities due to certain peaks. The optical resolution was around the expected value too, as from observation it was clear that the resolution was just good enough to make out the doublet. In part 2, the Nitrogen emission spectrum produced a usable Deslandre table, showing that the Franck-Condon factors were interpreted correctly. The morse potential and the various energy levels all showed expected trends, with the difference between energy levels decreasing with increased interatomic distance. In part 3 the curve of the  tungsten emission spectrum followed closely the blackbody spectrum at T=2800 K, except for the intensity droping off very heavily with increased wavelength. In the final part of the experiment the absorption spectrum of iodine was plotted at different temperatures, showing the absorption of various vibrational energy levels. The plot of this against wavenumber was sufficient in estimating the fundamental wavenumber to be 133 $cm^{-1}$, the anharmonic constant to be 1 and the zero point energy to be $E_0=15,498.75 cm^{-1}$.
+
+\begin{thebibliography}{6}
+
+\bibitem{atkins} 
+P.W. Atkins
+\textit{Physical Chemistry} 9th Edition, chapter 12
+
+\bibitem{Herzberg}
+G. Herzberg
+\textit{Molecular Spectra and Molecular Structure} Volume 1, chapter 3
+
+\bibitem{Franck-Condon}
+J.C. Wright, T.J. Zielinski.
+\textit{Frack-Condon Factors and their use in Under-graduate Quantum Mechanics}
+
+\bibitem{Kaye}
+G. W. C. Kaye and T. H. Laby.
+\textit{Tables of Physical and Chemical Constants}, 16th edition
+
+\bibitem{Pursell}
+C.J. Pursell, L. Doezema.
+\textit{The Electronic Absorption Spectrum of Molecular Iodine: A New Fitting Procedure for the Physical Chemistry Laboratory} J. Chem. Ed. 1999, 76, 839-841
+
+\bibitem{McNaught}
+I.J. Mcnaught.
+\textit{The Electronic Spectrum of Iodine Revisited}, J. Chem. Ed. 1980, 57, 101-105
+
+\bibitem{George}
+S. George, N. Krishnamurthy
+\textit{Absorption spectrum of iodine vapour}
+
+\bibitem{MO theory}
+S. Lower, S.F.U. Emeritus. 
+\textit{9.8: Molecular Orbital Theory} Chemistry LibreTexts, 24/08/19
+
+\bibitem{Born-opp}
+M. Born, J. R. Oppenheimer. 
+\textit{ "Zur Quantentheorie der Molekeln" [On the Quantum Theory of Molecules]}, Annalen der Physik. 389(20). 457-484.
+
+\bibitem{Selection Rules}
+C.Y. Lin, Z. Lu. 
+\textit{Selection rules and transition moment integral}, Chemistry LibreTexts, 05/06/19.
+
+$https://chem.libretexts.org/Bookshelves/Physical\_and\_Theoretical\_Chemistry\_$
+
+$Textbook\_Maps/Supplemental\_Modules\_(Physical\_and\_Theoretical\_Chemistry)/$
+
+$Spectroscopy/Fundamentals\_of\_Spectroscopy/Selection\_rules\_and\_transition\$
+
+$\_moment\_integral$
+
+\bibitem{H pic}
+R. Nave.
+\textit{Hydrogen Molecule}
+ $http://hyperphysics.phy-astr.gsu.edu/hbase/molecule/hmol.html$
+
+\bibitem{Rotational Spec}
+B. Strong
+\textit{Rotational Spectroscopy of Diatomic Molecules}. 30/09/19. $https://chem.libretexts.org/Bookshelves/Physical\_and\_Theoretical\_Chemistry\_$
+
+$Textbook\_Maps/Supplemental\_Modules\_(Physical\_and\_Theoretica\l\_Chemistry)$
+
+$/Spectroscopy/Rotational\_Spectroscopy/Rotational\_Spectroscopy\_of\_Diatomic$
+
+$\_Molecules$
+
+\bibitem{Morse}
+P.M. Morse
+\textit{"Diatomic molecules according to the wave mechanics. II. Vibrational levels".} Phys. Rev. 34. pp. 57–64. (1929)
+
+\bibitem{Hollas}
+J.M. Hollas
+\textit{Modern Spectroscopy} 3rd ed. John Wiley. 77 and 103-130.
+
+\bibitem{Linear Molecules}
+J. Rennie
+\textit{Rotation of Linear Molecules}
+05/06/19. $https://chem.libretexts.org/Bookshelves/Physical\_and\_Theoretical$
+
+$\_Chemistry\_Textbook\_Maps/Supplemental\_Modules\_(Physical\_and\_Theoretical$
+
+$\_Chemistry)/Spectroscopy/Rotational\_Spectroscopy/Rotation\_of\_Linear\_Molecules$
+
+\bibitem{Electronic Spec}
+A. D. Hammerich
+\textit{Electronic Spectroscopy 
+} 24/08/13. University of Illinois, Chicago. $http://www2.chem.uic.edu/sneep/chem343/manuals/Elec\_Notes.pdf$
+
+\bibitem{MIT}
+A. Adams.
+\textit{Lecture 8
+Quantum Harmonic Oscillator: Brute Force Methods}
+05/03/13. MIT 
+$https://ocw.mit.edu/courses/physics/8-04-quantum-physics-i-spring-2013/lecture-notes/MIT8\_04S13\_Lec08.pdf
+
+\bibitem{manual}
+A Halma Company
+\textit{Flame Minature Spectrometer User Manual} Ocean Optics. 2015.
+
+\bibitem{19}
+T.J. Fellers, M.W. Davidson
+\textit{Concepts in Digital Imaging Technology:CCD Saturation and Blooming}
+Hamamatsu Learning Center. 
+$https://hamamatsu.magnet.fsu.edu/articles/ccdsatandblooming.html$
+
+\bibitem{20}
+J. Lovine
+\textit{PIC Projects for Non_Programmers.} 183-211.
+
+\bibitem{21}
+C.J. Sansonetti, M.L. Salit, J. Reader
+\textit{Wavelengths of spectral lines in mercury pencil lamps.}
+Applied Optics. Vol. 35(1). 1996
+
+\bibitem{22}
+H.Jean-Ruel, J. Reid, G. Dodd.
+\textit{Resolving the magnetic hyperfine structure of Hg Isotopes using a VIPA
+grating spectrometer.} LightMachinery Inc.
+
+
+\textit{Web links correct as of 25/02/20}
+\end{thebibliography}
+
+\end{document}
